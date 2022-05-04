@@ -4,17 +4,13 @@ import 'package:stream_demo/domain/models.dart';
 import 'package:stream_demo/presentation/bloc/user_bloc.dart';
 import 'package:stream_demo/presentation/widgets/user_input_text_field.dart';
 
-class AddScreen extends StatefulWidget {
+class AddScreen extends StatelessWidget {
   const AddScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddScreen> createState() => _AddScreenState();
-}
-
-class _AddScreenState extends State<AddScreen> {
-  String? name;
-  @override
   Widget build(BuildContext context) {
+    // print('triggered');
+    // final state = context.watch<UserBloc>().state;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add user'),
@@ -22,23 +18,25 @@ class _AddScreenState extends State<AddScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: UserInputTextField(
-              inputString: (name) {
-                this.name = name;
-              },
-            ),
+          const Padding(
+            padding: EdgeInsets.all(15),
+            child: UserInputTextField(),
           ),
           const SizedBox(height: 10),
           ElevatedButton(
-              onPressed: () {
-                if (name != null) {
-                  context.read<UserBloc>().add(UserAdded(User(name!)));
-                  Navigator.of(context).pop();
-                }
-              },
-              child: const Text('Add')),
+            onPressed: () {
+              final state = context.read<UserBloc>().state;
+              if (state.userInput.isNotEmpty) {
+                context.read<UserBloc>().add(
+                      UserAdded(
+                        User(state.userInput),
+                      ),
+                    );
+                Navigator.of(context).pop();
+              }
+            },
+            child: const Text('Add'),
+          ),
         ],
       ),
     );

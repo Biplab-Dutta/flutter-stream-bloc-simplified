@@ -17,5 +17,14 @@ class UserAdded extends UserEvent {
   final User user;
 
   @override
-  List<Object> get props => [user];
+  List<Object> get props => [];
+}
+
+class UserInputChanged extends UserEvent {
+  const UserInputChanged(this.input);
+
+  final String input;
+
+  @override
+  List<Object> get props => [input];
 }
