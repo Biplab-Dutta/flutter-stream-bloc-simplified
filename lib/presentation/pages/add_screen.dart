@@ -9,8 +9,6 @@ class AddScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print('triggered');
-    // final state = context.watch<UserBloc>().state;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add user'),

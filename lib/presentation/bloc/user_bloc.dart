@@ -13,7 +13,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         super(const UserState()) {
     on<UserRequested>(_onUserRequested);
     on<UserAdded>(_onUserAdded);
-    on<UserInputChanged>(_onUserInput);
+    on<UserInputChanged>(_onUserInputChanged);
   }
 
   final UserRepository _repository;
@@ -45,7 +45,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(state.copyWith(userInput: ''));
   }
 
-  void _onUserInput(
+  void _onUserInputChanged(
     UserInputChanged event,
     Emitter<UserState> emit,
   ) {
