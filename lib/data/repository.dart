@@ -5,10 +5,10 @@ import 'package:stream_demo/data/some_data_source.dart';
 import 'package:stream_demo/domain/models.dart';
 
 class UserRepository {
-  final SomeDataSource _dataSource;
+  final RemoteDataSource _dataSource;
 
   UserRepository(
-    SomeDataSource dataSource,
+    RemoteDataSource dataSource,
   ) : _dataSource = dataSource {
     _dataSource.getUsers().then(
           (users) => _userStreamController.add(users),

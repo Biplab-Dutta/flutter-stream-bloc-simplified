@@ -8,7 +8,7 @@ import 'package:stream_demo/presentation/pages/user_page.dart';
 void main() {
   runApp(
     RepositoryProvider(
-      create: (context) => UserRepository(const SomeDataSource()),
+      create: (context) => UserRepository(const RemoteDataSource()),
       child: const MyApp(),
     ),
   );

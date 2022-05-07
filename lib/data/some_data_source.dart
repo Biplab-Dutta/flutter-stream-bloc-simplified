@@ -1,7 +1,7 @@
 import 'package:stream_demo/domain/models.dart';
 
-class SomeDataSource {
-  const SomeDataSource();
+class RemoteDataSource {
+  const RemoteDataSource();
 
   /// This class, in a real project is supposed to make network requests to
   /// the server to get the data. But here we will just return our hard-coded
